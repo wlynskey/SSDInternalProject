@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Login</h2>
+<div>
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post)) {
+        <form>
+            <label for="choice"> Select Account Type:</label>
+            <select name="choice">
+                <option value="Customer">Customer</option>
+                <option value="Staff">Staff</option>
+                <option value="Administrator">Administrator</option>
+            </select>
+            <label for="username"> User Name</label>
+            <input type="text" name="username" />
+            <label for="password"> Password</label>
+            <input type="password" name="password" />
+
+           <input for="submit" type="submit" id="submit" value="submit" />
+        </form>
+    }
+</div>
+<br/>
+<br />
+<br />
+<p> still haven't had an account? </p>
+@Html.ActionLink("Register", "Register",
+                            new {
+                                controller = "Home",
+                            })

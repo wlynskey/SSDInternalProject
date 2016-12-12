@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Customer";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Customer permission</h2>
+<p> Welcome @Html.Raw(ViewBag.userName)</p>
+
+<p> View own account info </p>
+@Html.ActionLink("Account Detail", "AccountDetail",
+                            new {
+                                controller = "Home",
+                            })
+<p> View Ticket </p>
+@Html.ActionLink("Ticket List", "ViewTicketLists",
+                            new {
+                                controller = "Home",
+                            })
+<p> View evaluating </p>
+@Html.ActionLink("Evaluating", "Evaluating",
+                            new {
+                                controller = "Home",
+                            })
