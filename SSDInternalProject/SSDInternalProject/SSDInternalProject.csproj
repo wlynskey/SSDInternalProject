@@ -118,8 +118,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\internal-project.css" />
+    <Content Include="CSS\theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\slightly-faster-than-lightspeed-computer-repair.ai" />
+    <None Include="CSS\variables.less" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\slightly-faster-than-lightspeed-computer-repair.png" />
     <Content Include="Scripts\jquery-1.10.2.js" />
