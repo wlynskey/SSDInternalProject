@@ -38,8 +38,7 @@ namespace SSDInternalProject.Controllers.Repositories {
         }
 
         // Create
-        public void Create(string Name, string Password, 
-                string Phone, string Address) {
+        public void Create(UserVM user) {
             // save change to DB in the future...
         }
 
@@ -65,18 +64,6 @@ namespace SSDInternalProject.Controllers.Repositories {
         public void Delete(int userId) {
             // save change to DB in the future...
         }
-
-        /*
-        public UserVM GetAccountInfo(string userName) {
-            // Hard code now, query the DB in the future
-            return CreateFakeAccount();
-        }
-
-        public UserVM GetAccountInfoByID(int ID) {
-            // Hard code now, query the DB in the future
-            return CreateFakeAccount();
-        }
-        */
 
     }
 }
