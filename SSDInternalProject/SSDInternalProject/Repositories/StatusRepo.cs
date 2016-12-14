@@ -35,9 +35,7 @@ namespace SSDInternalProject.Repositories
             List<StatusVM> list = new List<StatusVM>();
             foreach(StatusVM item in statusList)
             {
-                StatusVM status = new StatusVM();
-                status.Status = item;
-                list.Add(status);
+                list.Add(item);
             }
             return list;
         }

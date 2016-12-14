@@ -9,7 +9,7 @@ namespace SSDInternalProject.ViewModels
     public class StatusVM
     {
         // Primary Key
-        [Required(ErrorMessage = "Primary Key Required"]
+        [Required(ErrorMessage = "Primary Key Required")]
         public int StatusVMId { get; set; }
 
         [Required(ErrorMessage = "Need to include a status")]
