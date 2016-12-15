@@ -1,5 +1,6 @@
 ﻿@model SSDInternalProject.ViewModels.TicketVM
 @using SSDInternalProject.Repositories
+@using SSDInternalProject.Controllers.Repositories
 @using SSDInternalProject.ViewModels
 
 @{
@@ -22,6 +23,45 @@
                 string creationDate = Model.CreationDate.ToString("dd/MM/yy");
             }
             @Html.Raw(@creationDate)
+        </dd>
+
+        <dt>
+            Customers
+        </dt>
+
+        <dd>
+            @{
+                UserTicketRepo utRepo = new UserTicketRepo();
+                UserRepo uRepo = new UserRepo();
+                foreach (UserTicketVM ur in utRepo.GetUserTicketList())
+                {
+                    if (Model.TicketVMId == ur.TicketVMId && ur.RoleVMId == 1)
+                    {
+                        UserVM user = uRepo.GetUserInfo(ur.UserVMId);
+                        string name = user.FirstName + " " + user.LastName + ", ";
+                        @name
+                    }
+                }
+            }
+        </dd>
+
+
+        <dt>
+            Staff
+        </dt>
+
+        <dd>
+            @{
+                foreach (UserTicketVM ur in utRepo.GetUserTicketList())
+                {
+                    if (Model.TicketVMId == ur.TicketVMId && ur.RoleVMId == 2)
+                    {
+                        UserVM user = uRepo.GetUserInfo(ur.UserVMId);
+                        string name = user.FirstName + " " + user.LastName + ", ";
+                        @name
+                    }
+                }
+            }
         </dd>
 
         <dt>
@@ -145,6 +185,8 @@
         </dd>
 
     </dl>
+    @Html.ActionLink("Edit People", "TicketUsers", "UserTicket", new { id = Model.TicketVMId }, null)
+    <br />
     @{
         string[] images = { Model.imagePath1, Model.imagePath2, Model.imagePath3, Model.imagePath4, Model.imagePath5 };
         foreach (string image in images)

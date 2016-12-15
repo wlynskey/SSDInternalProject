@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SSDInternalProject.ViewModels.UserTicketVM>
+@using SSDInternalProject.Repositories
+@using SSDInternalProject.Controllers.Repositories
+@using SSDInternalProject.ViewModels
+
+@{
+    ViewBag.Title = "TicketUsers";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>TicketUsers</h2>
+
+<p>
+    @Html.ActionLink("Add Person", "AddUserTicket", new { id = ViewBag.TicketId })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketVMId)
+        </th>
+        <th>
+            Role
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @{
+                UserRepo uRepo = new UserRepo();
+                foreach (UserVM user in uRepo.GetUsrInfoList())
+                {
+                    if (item.UserVMId == user.UserVMId)
+                    {
+                        string name = user.FirstName + " " + user.LastName + ", ";
+                        @name
+                    }
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketVMId)
+        </td>
+        <td>
+            @{
+                RoleRepo rRepo = new RoleRepo();
+                foreach (RoleVM role in rRepo.GetRolesList())
+                {
+                    if (item.RoleVMId == role.RoleVMId)
+                    {                    
+                        @role.Role
+                    }
+                }
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.UserTicketVMId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserTicketVMId })
+        </td>
+    </tr>
+}
+
+</table>
