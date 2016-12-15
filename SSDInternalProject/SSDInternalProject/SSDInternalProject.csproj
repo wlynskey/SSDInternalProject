@@ -134,6 +134,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\slightly-faster-than-lightspeed-computer-repair.png" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\internal-project.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -164,6 +165,7 @@
     <Compile Include="Repositories\UserRoleRepo.cs" />
     <Compile Include="Repositories\UserTicketRepo.cs" />
     <Compile Include="ViewModels\BrandVM.cs" />
+    <Compile Include="ViewModels\ContactFormVM.cs" />
     <Compile Include="ViewModels\DeviceVM.cs" />
     <Compile Include="ViewModels\EvaluationVM.cs" />
     <Compile Include="ViewModels\RepairVM.cs" />
@@ -205,6 +207,9 @@
     <Content Include="Views\Customer\Create.cshtml" />
     <Content Include="Views\UserTicket\TicketUsers.cshtml" />
     <Content Include="Views\UserTicket\AddUserTicket.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Evaluating.cshtml" />
+    <Content Include="Views\Home\EvaluatingDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

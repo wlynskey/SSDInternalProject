@@ -96,5 +96,10 @@ namespace SSDInternalProject.Controllers {
             RepairVM item = rRepo.GetRepair(Convert.ToInt16(formCollection["SelectedRepairItems"]));
             return View(item);
         }
+
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
     }
 }
