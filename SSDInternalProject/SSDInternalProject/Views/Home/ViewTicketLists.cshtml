@@ -10,37 +10,13 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.TicketVMId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.CreationDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.RepairStartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RepairFinishDate)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.FinishDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Notes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imagePath1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imagePath2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imagePath3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imagePath4)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imagePath5)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Hours)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.QuotedCost)
@@ -51,49 +27,19 @@
         <th>
             @Html.DisplayNameFor(model => model.StatusVMId)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RepairVMId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DeviceVMId)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.TicketVMId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.CreationDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RepairStartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RepairFinishDate)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.FinishDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Notes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imagePath1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imagePath2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imagePath3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imagePath4)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imagePath5)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Hours)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.QuotedCost)
@@ -105,15 +51,7 @@
             @Html.DisplayFor(modelItem => item.StatusVMId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.RepairVMId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DeviceVMId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TicketVMId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TicketVMId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TicketVMId })
+            @Html.ActionLink("Details", "ViewTicketListDetails", new { id=item.TicketVMId })
         </td>
     </tr>
 }

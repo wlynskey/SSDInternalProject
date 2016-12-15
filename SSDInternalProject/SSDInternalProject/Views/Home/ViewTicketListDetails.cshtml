@@ -1,0 +1,147 @@
+﻿@model SSDInternalProject.ViewModels.TicketVM
+
+@{
+    ViewBag.Title = "ViewTicketListDetails";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>ViewTicketListDetails</h2>
+
+<div>
+    <h4>TicketVM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairFinishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairFinishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinishDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinishDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagePath1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagePath1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagePath2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagePath2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagePath3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagePath3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagePath4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagePath4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imagePath5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imagePath5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Hours)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hours)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuotedCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuotedCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FinalCost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FinalCost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusVMId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusVMId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RepairVMId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RepairVMId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeviceVMId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeviceVMId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.TicketVMId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

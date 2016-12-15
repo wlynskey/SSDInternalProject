@@ -13,7 +13,9 @@
     </head>
     <body>
         <header>
-            <div class="header-logo"><img alt="Brand" src="~/Images/slightly-faster-than-lightspeed-computer-repair.png"></div>
+            @if (!(ViewBag.HideHeaderImg != null && ViewBag.HideHeaderImg == true)) {
+                <div class="header-logo"><img alt="Brand" src="~/Images/slightly-faster-than-lightspeed-computer-repair.png"></div>
+            }
             <nav class="navbar navbar-default navbar-main">
                 <div class="container-fluid">
                     <div class="navbar-header">
@@ -45,6 +47,9 @@
             </nav>
         </header>
         <main>
+            @if (ViewBag.DontPlaceInPanel != null && ViewBag.DontPlaceInPanel == true) {
+                @RenderBody()
+            } else {
             <div class="panel panel-default panel-main">
                 <div class="panel-heading">
                     <h2 class="panel-title">@ViewBag.Title</h2>
@@ -53,6 +58,7 @@
                     @RenderBody()
                 </div>
             </div>
+            }
         </main>
         <footer>
             <p>&copy; Slightly Faster Than Light Speed Computer Repairs</p>

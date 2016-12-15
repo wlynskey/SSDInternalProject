@@ -80,6 +80,11 @@ namespace SSDInternalProject.Controllers {
             List<TicketVM> items = aRepo.GetSampleTickets(userName);
             return View(items);
         }
+        public ActionResult ViewTicketListDetails(int id)
+        {
+            TicketRepo aRepo = new TicketRepo();
+            return View(aRepo.GetTicket(id));
+        }
 
         public ActionResult Evaluating(string userName) {
             ViewBag.userName = userName;
