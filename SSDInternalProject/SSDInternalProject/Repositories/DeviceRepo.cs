@@ -10,24 +10,24 @@ namespace SSDInternalProject.Repositories
     {
         private DeviceVM[] devices = {
             new DeviceVM {
-                DeviceVMId = 1,
-                Make = "HP",
+                DeviceVMId = 1,                
                 Model = "Pavilion",
-                Year = 2012
+                Year = 2012,
+                BrandVMId = 1                
             },
             new DeviceVM
             {
-                DeviceVMId = 2,
-                Make = "Apple",
+                DeviceVMId = 2,                
                 Model = "Mac Book Pro",
-                Year = 2000
+                Year = 2000,
+                BrandVMId = 2
             },
             new DeviceVM
             {
-                DeviceVMId = 3,
-                Make = "Dell",
-                Model = "Dell Machine 5000", 
-                Year = 2015
+                DeviceVMId = 3,                
+                Model = "Machine 5000", 
+                Year = 2015,
+                BrandVMId = 3
             }
         };
 

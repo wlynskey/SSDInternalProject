@@ -40,8 +40,11 @@
         <td>
             @Html.DisplayFor(modelItem => item.TicketVMId)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
+        <td>            
+            @{
+                string creationDate = item.CreationDate.ToString("dd/MM/yy");
+            }
+            @Html.Raw(@creationDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.QuotedCost)
@@ -69,8 +72,9 @@
         <td>
             @{
                 DeviceRepo dRepo = new DeviceRepo();
+                BrandRepo bRepo = new BrandRepo();
                 DeviceVM device = dRepo.GetDevice(item.DeviceVMId);
-                string deviceName = device.Make + " " + device.Model;
+                string deviceName = bRepo.GetBrand(device.BrandVMId).Brand + " " + device.Model;
             }
             @Html.Raw(@deviceName)
         </td>

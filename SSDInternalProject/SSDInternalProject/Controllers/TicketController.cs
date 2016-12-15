@@ -1,4 +1,5 @@
 ﻿using SSDInternalProject.Controllers.Repositories;
+using SSDInternalProject.Repositories;
 using SSDInternalProject.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,14 @@ namespace SSDInternalProject.Controllers
         {
             TicketRepo tRepo = new TicketRepo();
             TicketVM ticket = tRepo.GetTicket(id);
+            StatusRepo sRepo = new StatusRepo();
+            ViewBag.Statuses = sRepo.GetStatusList();
+            DeviceRepo dRepo = new DeviceRepo();
+            ViewBag.Devices = dRepo.GetDeviceList();
+            RepairRepo rRepo = new RepairRepo();
+            ViewBag.Repairs = rRepo.GetRepairList();
+            BrandRepo bRepo = new BrandRepo();
+            ViewBag.Brands = bRepo.GetBrandList();
             return View(ticket);
         }
         [HttpPost]

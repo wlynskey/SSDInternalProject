@@ -13,7 +13,7 @@ namespace SSDInternalProject.Repositories {
             myRepairList = new List<RepairVM>();
             RepairVM repair1 = new RepairVM();
             repair1.RepairVMId = 1;
-            repair1.Name = "Monitor";
+            repair1.Name = "Monitor Repair";
             repair1.AvgHours = 2;
             repair1.AvgCost = 25;
             repair1.Description = "Screen is broken";
@@ -21,7 +21,7 @@ namespace SSDInternalProject.Repositories {
 
             RepairVM repair2 = new RepairVM();
             repair2.RepairVMId = 2;
-            repair2.Name = "Power";
+            repair2.Name = "Power Source Repair";
             repair2.AvgHours = 1;
             repair2.AvgCost = 30;
             repair2.Description = "Power is burned";
