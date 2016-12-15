@@ -154,6 +154,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BrandRepo.cs" />
     <Compile Include="Repositories\DeviceRepo.cs" />
     <Compile Include="Repositories\RepairRepo.cs" />
     <Compile Include="Repositories\RoleRepo.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Repositories\UserRepo.cs" />
     <Compile Include="Repositories\UserRoleRepo.cs" />
     <Compile Include="Repositories\UserTicketRepo.cs" />
+    <Compile Include="ViewModels\BrandVM.cs" />
     <Compile Include="ViewModels\DeviceVM.cs" />
     <Compile Include="ViewModels\EvaluationVM.cs" />
     <Compile Include="ViewModels\RepairVM.cs" />

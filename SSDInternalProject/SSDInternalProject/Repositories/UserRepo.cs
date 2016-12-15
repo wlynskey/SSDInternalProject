@@ -37,7 +37,11 @@ namespace SSDInternalProject.Controllers.Repositories {
             user2.Country = "Canada";
             myUserList.Add(user2);
         }
-
+        //
+        public bool LoginSuccessfully(string name, string password) {
+            // make them pass directly, handle the permission right in the future
+            return true;
+        }
         // Create
         public void Create(UserVM user) {
             // save change to DB in the future...

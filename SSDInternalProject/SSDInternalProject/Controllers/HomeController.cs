@@ -20,17 +20,14 @@ namespace SSDInternalProject.Controllers {
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Login(FormCollection formCollection) {
-            string catagory = formCollection["choice"];
             string name = formCollection["username"];
             string password = formCollection["password"];
-            switch(catagory) {
-                case "Customer":
-                    return RedirectToAction("Customer", "Home", new { userName = name, password = password });
-                case "Staff":
-                case "Administrator":
-                    return RedirectToAction("Staff", "Home", new { userName = name, password = password });
-                default:
-                    return View();
+            UserRepo uRpo = new UserRepo();
+            if (uRpo.LoginSuccessfully(name, password)) {
+                return RedirectToAction("Customer", "Home", new { userName = name, password = password });
+            } else {
+                ViewBag.errorMessage = "Permission denied, try again the username and password";
+                return View();
             }
         }
 
@@ -92,10 +89,12 @@ namespace SSDInternalProject.Controllers {
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Evaluating(FormCollection formCollection) {
-            string selectedRepairItems = formCollection["SelectedRepairItems"];
-            string[] items = selectedRepairItems.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-            return RedirectToAction("Customer", "Home");
+        public ActionResult EvaluatingDetail(FormCollection formCollection) {
+            string userName = formCollection["userName"];
+            ViewBag.userName = userName;
+            RepairRepo rRepo = new RepairRepo();
+            RepairVM item = rRepo.GetRepair(Convert.ToInt16(formCollection["SelectedRepairItems"]));
+            return View(item);
         }
     }
 }

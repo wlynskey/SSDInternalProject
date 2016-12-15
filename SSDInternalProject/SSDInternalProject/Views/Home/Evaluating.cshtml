@@ -6,31 +6,21 @@
 }
 
 <h2>Evaluating</h2>
-<p> Welcome @Html.Raw(ViewBag.userName)</p>
-
-<p> Please select the following issues</p>
+<h3> Welcome @Html.Raw(ViewBag.userName)</h3>
+<h4> Please select the following issues</h4>
 
 <div>
-    @using (Html.BeginForm("Evaluating", "Home", FormMethod.Post)) {
-        <form>
+    @using (Html.BeginForm("EvaluatingDetail", "Home", FormMethod.Post)) {
+        <form id="evaluatingForm">
+            <input type="hidden" name="userName" value=@Html.Raw(ViewBag.userName) />
             @foreach (var item in Model) {
-
-                <input type="checkbox" name="SelectedRepairItems"
-                       value=@Html.DisplayFor(modelItem => item.Name)>
-
-                @Html.DisplayFor(modelItem => item.Name)
-                <br />
-                @Html.DisplayNameFor(model => model.AvgHours)
-                @Html.DisplayFor(modelItem => item.AvgHours)
-                <br />
-                @Html.DisplayNameFor(model => model.AvgCost)
-                @Html.DisplayFor(modelItem => item.AvgCost)
-                <br />
-                @Html.DisplayNameFor(model => model.Description)
-                @Html.DisplayFor(modelItem => item.Description)
-                <br />
+                <input type="radio" 
+                        name="SelectedRepairItems"
+                        value=@Html.DisplayFor(modelItem => item.RepairVMId)>
+                
+                    @Html.DisplayFor(modelItem => item.Name)
             }
             <input for="submit" type="submit" id="submit" value="submit" />
-        </form>
+        </form>     
     }
 </div>
