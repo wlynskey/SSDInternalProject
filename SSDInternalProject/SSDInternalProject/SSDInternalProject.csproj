@@ -136,6 +136,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -146,6 +147,7 @@
     <Compile Include="Repositories\StatusRepo.cs" />
     <Compile Include="Repositories\TicketRepo.cs" />
     <Compile Include="Repositories\UserRepo.cs" />
+    <Compile Include="Repositories\UserRoleRepo.cs" />
     <Compile Include="Repositories\UserTicketRepo.cs" />
     <Compile Include="ViewModels\DeviceVM.cs" />
     <Compile Include="ViewModels\EvaluationVM.cs" />
@@ -173,6 +175,7 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Staff.cshtml" />
     <Content Include="Views\Home\ViewTicketLists.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

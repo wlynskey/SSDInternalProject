@@ -45,7 +45,16 @@ namespace SSDInternalProject.Controllers.Repositories {
 
         // Read
         public UserVM GetUserInfo(int id) {
-            return myUserList[0];
+            UserVM user = null;
+            for (int i = 0; i < myUserList.Count; i++)
+            {
+                if (id == myUserList[i].UserVMId)
+                {
+                    user = myUserList[i];
+                    break;
+                }
+            }
+            return user;
         }
 
         public UserVM GetUserInfo(string name) {
