@@ -1,4 +1,5 @@
-﻿using SSDInternalProject.ViewModels;
+﻿using SSDInternalProject.Repositories;
+using SSDInternalProject.ViewModels;
 using System.Collections.Generic;
 
 namespace SSDInternalProject.Controllers.Repositories {
@@ -24,7 +25,7 @@ namespace SSDInternalProject.Controllers.Repositories {
 
             UserVM user2 = new UserVM();
             user2.UserVMId = 2;
-            user2.Email = "John@my.bcit.ca";
+            user2.Email = "paul@my.bcit.ca";
             user2.FirstName = "Paul";
             user2.LastName = "Brain";
             user2.MiddelInitial = "P.B";
@@ -62,6 +63,48 @@ namespace SSDInternalProject.Controllers.Repositories {
 
         public List<UserVM> GetUsrInfoList() {
             return myUserList;
+        }
+
+        public List<UserVM> GetAllCustomers()
+        {
+            int CUSTOMER = 1;
+
+            List<UserVM> list = GetUsrInfoList();
+            UserRoleRepo urRepo = new UserRoleRepo();
+            List<UserRoleVM> userList = urRepo.GetUserRoleList();
+            List<UserVM> returnList = new List<UserVM>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                for (int j = 0; j < userList.Count; j++)
+                {
+                    if (list[i].UserVMId == userList[j].UserVMId && userList[j].RoleVMId == CUSTOMER)
+                    {
+                        returnList.Add(list[i]);
+                    }
+                }
+            }
+            return returnList;
+        }
+
+        public List<UserVM> GetAllStaff()
+        {
+            int STAFF = 2;
+
+            List<UserVM> list = GetUsrInfoList();
+            UserRoleRepo urRepo = new UserRoleRepo();
+            List<UserRoleVM> userList = urRepo.GetUserRoleList();
+            List<UserVM> returnList = new List<UserVM>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                for (int j = 0; j < userList.Count; j++)
+                {
+                    if (list[i].UserVMId == userList[j].UserVMId && userList[j].RoleVMId == STAFF)
+                    {
+                        returnList.Add(list[i]);
+                    }
+                }
+            }
+            return returnList;
         }
 
         // Update

@@ -1,0 +1,66 @@
+﻿@model SSDInternalProject.ViewModels.UserTicketVM
+@using SSDInternalProject.Repositories
+@using SSDInternalProject.Controllers.Repositories
+@using SSDInternalProject.ViewModels
+
+@{
+    ViewBag.Title = "AddUserTicket";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>AddUserTicket</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>UserTicketVM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.TicketVMId, htmlAttributes: new { @value = ViewBag.TicketId })
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoleVMId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <select id="RoleSelect" class="form-control">
+                    <option name="RoleVMId" value="null"></option>
+                    @{
+                        foreach (RoleVM item in ViewBag.Roles)
+                        {
+                            <option name="RoleStatusVM" value="@item.RoleVMId">@item.Role</option>
+                        }
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.RoleVMId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserVMId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <select id="UserSelect" class="form-control">
+                    <option name="RoleVMId" value="null"></option>
+                    @{
+                        UserRepo uRepo = new UserRepo();
+                        foreach (UserRoleVM item in ViewBag.UserRoles)
+                        {
+                            UserVM user = uRepo.GetUserInfo(item.UserVMId);
+                            <option class="@item.RoleVMId" name"UserVMId" value="@item.UserVMId">@user.FirstName @user.LastName</option>
+                        }
+                    }
+                </select>
+                @Html.ValidationMessageFor(model => model.RoleVMId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "TicketUsers")
+</div>
