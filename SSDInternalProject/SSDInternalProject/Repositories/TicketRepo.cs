@@ -14,7 +14,9 @@ namespace SSDInternalProject.Controllers.Repositories {
                 StatusVMId = 1,
                 DeviceVMId = 1,
                 RepairVMId = 1,
-                CreationDate = new DateTime(),
+                imagePath1 = "Images/ticketImages/pavilion1.jpg",
+                imagePath2 = "Images/ticketImages/pavilion2.jpg",
+                CreationDate = DateTime.Today,
                 Notes = "Need to switch out hard drive is SSD",
                 QuotedCost = 100.95M
             },
@@ -23,8 +25,11 @@ namespace SSDInternalProject.Controllers.Repositories {
                 TicketVMId = 2,
                 StatusVMId = 2,
                 DeviceVMId = 2,
+                imagePath1 = "Images/ticketImages/mac1.jpg",
+                imagePath2 = "Images/ticketImages/mac2.jpg",
+                imagePath3 = "Images/ticketImages/mac3.jpg",
                 CreationDate = new DateTime(2016, 11, 10),
-                RepairStartDate = new DateTime(),
+                RepairStartDate = DateTime.Today,
                 Notes = "He doesn't know what's wrong, it just needs to be fixed",
                 QuotedCost = 500M
             },
@@ -34,9 +39,10 @@ namespace SSDInternalProject.Controllers.Repositories {
                 StatusVMId = 4,
                 DeviceVMId = 3,
                 RepairVMId = 2,
+                imagePath1 = "Images/ticketImages/dell1.jpg",                
                 CreationDate = new DateTime(2016, 11, 1),
                 RepairStartDate = new DateTime(2016, 11, 15),
-                RepairFinishDate = new DateTime(),
+                RepairFinishDate = DateTime.Today,
                 Notes = "Upgrade Ram from 4 GB to 16 GB",
                 QuotedCost = 200M
             }

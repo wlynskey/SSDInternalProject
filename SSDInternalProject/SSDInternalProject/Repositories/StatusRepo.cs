@@ -23,11 +23,11 @@ namespace SSDInternalProject.Repositories
             },
             new StatusVM {
                 StatusVMId = 4,
-                Status = "evaluation"
+                Status = "repaired"
             },
             new StatusVM {
                 StatusVMId = 5,
-                Status = "evaluation"
+                Status = "complete"
             }
         };
         public List<StatusVM> GetStatusList()
