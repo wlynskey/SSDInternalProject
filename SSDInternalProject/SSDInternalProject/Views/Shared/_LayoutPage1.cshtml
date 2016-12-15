@@ -1,43 +1,54 @@
 ﻿<!DOCTYPE html>
-
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    <!-- Nav bar -->    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>    
-    <link href="~/CSS/theme.min.css rel="stylesheet" />
-    <link href="~/CSS/internal-project.css" rel="stylesheet" />
-    <base href="/" />
-</head>
-<body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="@Url.Action("Index", "Home")">Home</a>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <base href="/" />
+        <title>@ViewBag.Title</title>
+        <link href="~/CSS/bootstrap-sandstone.min.css" rel="stylesheet" />
+        <link href="~/CSS/internal-project.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="header-logo"><img alt="Brand" src="~/Images/slightly-faster-than-lightspeed-computer-repair.png"></div>
+            <nav class="navbar navbar-default navbar-main">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="@Url.Action("Index", "Home")">Home</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="@Url.Action("Login", "Home")">
+                                    Login
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="panel panel-default panel-main">
+                <div class="panel-heading">
+                    <h2 class="panel-title">@ViewBag.Title</h2>
+                </div>
+                <div class="panel-body">
+                    @RenderBody()
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="@Url.Action("Login", "Home")">
-                            Login
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <main>
-    @RenderBody()
-    </main>
-</body>
+        </main>
+        <footer>
+            <p>&copy; Slightly Faster Than Light Speed Computer Repairs</p>
+        </footer>
+    </body>
 </html>

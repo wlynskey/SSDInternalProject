@@ -117,13 +117,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\bootstrap-sandstone.min.css" />
+    <Content Include="CSS\bootstrap-theme.min.css" />
+    <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\internal-project.css" />
-    <Content Include="CSS\theme.min.css" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Images\slightly-faster-than-lightspeed-computer-repair.ai" />
+    <Content Include="CSS\bootstrap.min.css.map" />
+    <Content Include="CSS\bootstrap-theme.min.css.map" />
     <None Include="CSS\variables.less" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Images\slightly-faster-than-lightspeed-computer-repair.png" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
