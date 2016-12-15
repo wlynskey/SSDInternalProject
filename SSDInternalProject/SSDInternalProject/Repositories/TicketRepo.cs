@@ -22,7 +22,7 @@ namespace SSDInternalProject.Controllers.Repositories {
             {
                 TicketVMId = 2,
                 StatusVMId = 2,
-                DeviceVMId = 3,
+                DeviceVMId = 2,
                 CreationDate = new DateTime(2016, 11, 10),
                 RepairStartDate = new DateTime(),
                 Notes = "He doesn't know what's wrong, it just needs to be fixed",
@@ -31,8 +31,8 @@ namespace SSDInternalProject.Controllers.Repositories {
             new TicketVM
             {
                 TicketVMId = 1,
-                StatusVMId = 3,
-                DeviceVMId = 4,
+                StatusVMId = 4,
+                DeviceVMId = 3,
                 RepairVMId = 2,
                 CreationDate = new DateTime(2016, 11, 1),
                 RepairStartDate = new DateTime(2016, 11, 15),
@@ -48,6 +48,42 @@ namespace SSDInternalProject.Controllers.Repositories {
             foreach(TicketVM item in tickets)
             {
                 items.Add(item);
+            }
+            return items;
+        }
+
+        public List<TicketVM> GetAllTickets()
+        {
+            List<TicketVM> items = new List<TicketVM>();
+            foreach (TicketVM item in tickets)
+            {
+                items.Add(item);
+            }
+            return items;
+        }
+
+        public TicketVM GetTicket(int id)
+        {
+            List<TicketVM> items = GetAllTickets();
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].TicketVMId == id)
+                {
+                    return items[i];
+                }
+            }
+            return null;
+        }
+
+        public List<TicketVM> GetEvaluation()
+        {
+            List<TicketVM> items = new List<TicketVM>();
+            foreach (TicketVM item in tickets)
+            {
+                if (item.StatusVMId == 1)
+                {
+                    items.Add(item);
+                }                
             }
             return items;
         }

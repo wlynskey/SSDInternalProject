@@ -14,22 +14,22 @@ namespace SSDInternalProject.Controllers
         // GET: Staff
         public ActionResult Index(int userId)
         {
-            //For TESTING
-            if(userId == 0)
-            {
-                userId = 2;
-            }
-            // ---------------
             UserRoleRepo urRepo = new UserRoleRepo();
             UserRepo uRepo = new UserRepo();
             List<UserRoleVM> userRoles = urRepo.GetUserRoleList();
-            for(int i = 0; i < userRoles.Count; i++)
+            for (int i = 0; i < userRoles.Count; i++)
             {
                 if (userRoles[i].UserVMId == userId && userRoles[i].RoleVMId == 2)
                 {
                     ViewBag.StaffName = uRepo.GetUserInfo(userRoles[i].UserVMId).FirstName;
                 }
             }
+            return View();
+        }
+
+        // -------------- STAFF ACTIONS ------------------- // 
+        public ActionResult StaffDetail()
+        {
             return View();
         }
     }

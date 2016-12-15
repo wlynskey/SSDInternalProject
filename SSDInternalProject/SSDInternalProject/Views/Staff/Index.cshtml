@@ -4,5 +4,11 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Hello @ViewBag.StaffName</h2>
+
+<ul>
+    <li>@Html.ActionLink("Tickets", "Index", "Ticket")</li>
+    <li>@Html.ActionLink("Customers", "Index", "Customer")</li>
+    <li>@Html.ActionLink("Account Detail", "StaffDetail", "Staff")</li>
+</ul>
 

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SSDInternalProject.ViewModels.TicketVM>
+@using SSDInternalProject.Repositories;
+@using SSDInternalProject.ViewModels;
+
+@{
+    ViewBag.Title = "TicketList";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>TicketList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketVMId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuotedCost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusVMId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RepairVMId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeviceVMId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TicketVMId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuotedCost)
+        </td>
+        <td>
+            @{
+                StatusRepo sRepo = new StatusRepo();
+                string status = sRepo.GetStatus(item.StatusVMId).Status;
+            }
+            @Html.Raw(@status)            
+        </td>
+        <td>
+            @{
+                string repair;
+                if (item.RepairVMId != 0)
+                {
+                    RepairRepo rRepo = new RepairRepo();
+                    repair = rRepo.GetRepair(item.RepairVMId).Name;
+                }
+                else { repair = "unspecified"; }
+            }
+            @Html.Raw(@repair)
+
+        </td>
+        <td>
+            @{
+                DeviceRepo dRepo = new DeviceRepo();
+                DeviceVM device = dRepo.GetDevice(item.DeviceVMId);
+                string deviceName = device.Make + " " + device.Model;
+            }
+            @Html.Raw(@deviceName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.TicketVMId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.TicketVMId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.TicketVMId })
+        </td>
+    </tr>
+}
+
+</table>

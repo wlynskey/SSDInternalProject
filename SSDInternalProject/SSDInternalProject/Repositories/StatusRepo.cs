@@ -39,5 +39,17 @@ namespace SSDInternalProject.Repositories
             }
             return list;
         }
+        public StatusVM GetStatus(int id)
+        {
+            List<StatusVM> list = GetStatusList();
+            for (int i = 0; i < list.Count; i++) 
+            {
+                if (list[i].StatusVMId == id)
+                {
+                    return list[i];
+                }
+            }
+            return null;
+        }
     }
 }

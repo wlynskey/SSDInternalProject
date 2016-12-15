@@ -40,5 +40,18 @@ namespace SSDInternalProject.Repositories
             }
             return list;
         }
+
+        public DeviceVM GetDevice(int id)
+        {
+            List<DeviceVM> list = GetDeviceList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].DeviceVMId == id)
+                {
+                    return list[i];
+                }
+            }
+            return null;
+        }
     }
 }

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Tickets";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Tickets</h2>
+
+<ul>
+    <li>@Html.ActionLink("View All Tickets", "TicketList", "Ticket")</li>
+    <li>@Html.ActionLink("View Evaluations", "EvaluationList", "Ticket")</li>
+    <li>@Html.ActionLink("Create Ticket", "Create", "Ticket")</li>
+</ul>
+

@@ -35,10 +35,18 @@ namespace SSDInternalProject.Repositories {
         }
 
         // Read
-        public RepairVM GetRepairInfo() {
-            return myRepairList[0];
+        public RepairVM GetRepair(int id) {
+            List<RepairVM> list = GetRepairList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].RepairVMId == id)
+                {
+                    return list[i];
+                }
+            }
+            return null;
         }
-
+        
         public List<RepairVM> GetRepairList() {
             return myRepairList;
         }
