@@ -13,8 +13,6 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>UserVM</h4>
-        <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.UserVMId)
 
@@ -115,7 +113,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "AccountDetail")
+    @Html.ActionLink("Back to previous page", "AccountDetail")
 </div>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>

@@ -38,15 +38,14 @@ namespace SSDInternalProject.Controllers {
         }
 
         [HttpPost]
-        public ActionResult Register(string Name, 
-                string Password, string Phone, string Address) {
+        public ActionResult Register(UserVM user) {
             UserRepo aRepo = new UserRepo();
-            aRepo.Create(Name, Password, Phone, Address);
-            return RedirectToAction("Customer", "Home", new { userName = Name });
+            aRepo.Create(user);
+            return RedirectToAction("Customer", "Home", new { firstName = user.FirstName, lastName = user.LastName });
         }
 
-        public ActionResult Customer(string userName) {
-            ViewBag.userName = userName;
+        public ActionResult Customer(string firstName, string lastName) {
+            ViewBag.userName = firstName + " " + lastName;
             return View();
         }
 
