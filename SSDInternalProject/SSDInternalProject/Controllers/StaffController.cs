@@ -24,13 +24,28 @@ namespace SSDInternalProject.Controllers
                     ViewBag.StaffName = uRepo.GetUserInfo(userRoles[i].UserVMId).FirstName;
                 }
             }
+            ViewBag.HideHeaderImg = true;
             return View();
         }
 
-        // -------------- STAFF ACTIONS ------------------- // 
-        public ActionResult StaffDetail()
+        public ActionResult StaffDetail(int id)
         {
-            return View();
+            UserRepo uRepo = new UserRepo();
+            ViewBag.HideHeaderImg = true;
+            return View(uRepo.GetUserInfo(id));
+        }
+        public ActionResult Edit(int id)
+        {
+            UserRepo uRepo = new Repositories.UserRepo();
+            ViewBag.HideHeaderImg = true;
+            return View(uRepo.GetUserInfo(id));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit()
+        {
+            ViewBag.HideHeaderImg = true;
+            return RedirectToAction("Index", "Staff");
         }
     }
 }

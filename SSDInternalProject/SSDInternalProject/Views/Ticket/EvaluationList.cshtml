@@ -71,7 +71,8 @@
                 @{
                     DeviceRepo dRepo = new DeviceRepo();
                     DeviceVM device = dRepo.GetDevice(item.DeviceVMId);
-                    string deviceName = device.Make + " " + device.Model;
+                    BrandRepo bRepo = new BrandRepo();
+                    string deviceName = bRepo.GetBrand(dRepo.GetDevice(item.DeviceVMId).BrandVMId).Brand + " " + device.Model;
                 }
                 @Html.Raw(@deviceName)
             </td>

@@ -1,4 +1,6 @@
 ﻿@model SSDInternalProject.ViewModels.TicketVM
+@using SSDInternalProject.ViewModels
+@using SSDInternalProject.Repositories
 
 @{
     ViewBag.Title = "Create";
@@ -121,24 +123,63 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.StatusVMId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StatusVMId, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-3">
+                <select class="form-control">
+                    <option name="StatusVMId" value="null"></option>
+                    @{
+                        foreach (StatusVM item in ViewBag.Statuses)
+                        {
+                             <option name="StatusVMId" value="@item.StatusVMId">@item.Status</option>
+                        }
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.StatusVMId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.RepairVMId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RepairVMId, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-3">
+                <select class="form-control">
+                    <option name="RepairVMId" value="null"></option>
+                    @{
+                        foreach (RepairVM item in ViewBag.Repairs)
+                        {
+                            <option name="RepairVMId" value="@item.RepairVMId">@item.Name</option>
+                        }
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.RepairVMId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DeviceVMId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DeviceVMId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => new BrandRepo().GetBrand(new DeviceRepo().GetDevice(model.DeviceVMId).BrandVMId).Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <select id="BrandSelect" class="form-control">
+                    <option name="BrandVMId" value="null"></option>
+                    @{
+                        foreach (BrandVM item in ViewBag.Brands)
+                        {
+                            <option value="@item.BrandVMId">@item.Brand</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => new DeviceRepo().GetDevice(model.DeviceVMId).Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <select id="ModelSelect" class="form-control">
+                    <option class="BlankSelect" name="DeviceVMId" value="null"></option>
+                    @{
+                        foreach (DeviceVM item in ViewBag.Devices)
+                        {
+                            <option name="DeviceVMId" class="@item.BrandVMId" value="@item.DeviceVMId">@item.Model</option>
+                        }
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.DeviceVMId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -152,5 +193,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "TicketList", "Ticket")
+    @Html.ActionLink("Back to Tickets", "Index", "Ticket")
 </div>

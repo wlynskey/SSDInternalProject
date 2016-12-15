@@ -69,5 +69,17 @@ namespace SSDInternalProject.Repositories
             }
             return returnList;
         }
+        public UserTicketVM GetUserTicket(int id)
+        {
+            List<UserTicketVM> list = GetUserTicketList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].UserTicketVMId == id)
+                {
+                    return list[i];
+                }
+            }
+            return null;
+        }
     }
 }

@@ -19,7 +19,7 @@ namespace SSDInternalProject.Repositories
             },
             new UserRoleVM
             {
-                UserRoleVMId = 1,
+                UserRoleVMId = 2,
                 RoleVMId = 2,
                 UserVMId = 2,
                 DateAssigned = new DateTime()
@@ -33,6 +33,18 @@ namespace SSDInternalProject.Repositories
                 list.Add(item);
             }
             return list;
+        }
+        public UserRoleVM GetUserRole(int id)
+        {
+            List<UserRoleVM> list = GetUserRoleList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].UserRoleVMId == id)
+                {
+                    return list[i];
+                }
+            }
+            return null;
         }
     }
 }

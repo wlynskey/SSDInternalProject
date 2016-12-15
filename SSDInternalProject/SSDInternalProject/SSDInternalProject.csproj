@@ -210,6 +210,9 @@
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Home\Evaluating.cshtml" />
     <Content Include="Views\Home\EvaluatingDetail.cshtml" />
+    <Content Include="Views\UserTicket\Details.cshtml" />
+    <Content Include="Views\UserTicket\Delete.cshtml" />
+    <Content Include="Views\Staff\StaffDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

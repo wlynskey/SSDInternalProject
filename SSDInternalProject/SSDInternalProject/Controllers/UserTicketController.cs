@@ -11,16 +11,12 @@ namespace SSDInternalProject.Controllers
 {
     public class UserTicketController : Controller
     {
-        // GET: UserTicket
-        public ActionResult Index()
-        {
-            return View();
-        }
 
         public ActionResult TicketUsers(int id)
         {
             UserTicketRepo utRepo = new UserTicketRepo();
             ViewBag.TicketId = id;
+            ViewBag.HideHeaderImg = true;
             return View(utRepo.GetUsersForTicket(id));
         }
         public ActionResult AddUserTicket(int id)
@@ -30,7 +26,27 @@ namespace SSDInternalProject.Controllers
             ViewBag.Roles = rRepo.GetRolesList();
             UserRoleRepo urRepo = new UserRoleRepo();
             ViewBag.UserRoles = urRepo.GetUserRoleList();
+            ViewBag.HideHeaderImg = true;
             return View();
+        }
+        public ActionResult Details(int id)
+        {
+            UserTicketRepo urRepo = new UserTicketRepo();
+            ViewBag.HideHeaderImg = true;
+            return View(urRepo.GetUserTicket(id));
+        }
+        public ActionResult Delete(int id)
+        {
+            UserTicketRepo urRepo = new UserTicketRepo();
+            ViewBag.HideHeaderImg = true;
+            return View(urRepo.GetUserTicket(id));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete()
+        {
+            ViewBag.HideHeaderImg = true;
+            return RedirectToAction("TicketUsers", "UserTicket");
         }
     }
 }
