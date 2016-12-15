@@ -26,6 +26,22 @@ namespace SSDInternalProject.Repositories {
             repair2.AvgCost = 30;
             repair2.Description = "Power is burned";
             myRepairList.Add(repair2);
+
+            RepairVM repair3 = new RepairVM();
+            repair3.RepairVMId = 3;
+            repair3.Name = "Keyboard Repair";
+            repair3.AvgHours = 1;
+            repair3.AvgCost = 10;
+            repair3.Description = "Keyboard is malfuntional";
+            myRepairList.Add(repair3);
+
+            RepairVM repair4 = new RepairVM();
+            repair4.RepairVMId = 4;
+            repair4.Name = "Montherboard Repair";
+            repair4.AvgHours = 1;
+            repair4.AvgCost = 10;
+            repair4.Description = "Montherboard is ruimed";
+            myRepairList.Add(repair4);
         }
 
         // Create

@@ -193,6 +193,7 @@
     <Content Include="Views\Ticket\Delete.cshtml" />
     <Content Include="Views\Ticket\Create.cshtml" />
     <Content Include="Views\Ticket\EvaluationList.cshtml" />
+    <Content Include="Views\Home\Evaluating.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
