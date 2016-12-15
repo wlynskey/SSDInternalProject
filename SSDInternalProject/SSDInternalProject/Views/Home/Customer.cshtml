@@ -16,9 +16,11 @@
 @Html.ActionLink("Ticket List", "ViewTicketLists",
                             new {
                                 controller = "Home",
+                                userName = ViewBag.userName
                             })
 <p> View evaluating </p>
 @Html.ActionLink("Evaluating", "Evaluating",
                             new {
                                 controller = "Home",
+                                userName = ViewBag.userName
                             })

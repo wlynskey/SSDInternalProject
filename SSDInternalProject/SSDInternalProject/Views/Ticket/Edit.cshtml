@@ -1,4 +1,6 @@
 ﻿@model SSDInternalProject.ViewModels.TicketVM
+@using SSDInternalProject.ViewModels
+@using SSDInternalProject.Repositories
 
 @{
     ViewBag.Title = "Edit";
@@ -10,7 +12,7 @@
 @using (Html.BeginForm("Edit", "Ticket", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>TicketVM</h4>
         <hr />
@@ -19,8 +21,8 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.CreationDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreationDate, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-10">                
+                @Html.EditorFor(model => model.CreationDate, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -52,7 +54,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Notes, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Notes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextArea("Notes", new { rows = 5, cols = 100 })
                 @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -123,24 +125,91 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.StatusVMId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StatusVMId, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-3">
+                <select class="form-control">
+                    <option name="StatusVMId" value="null"></option>
+                    @{
+                        foreach (StatusVM item in ViewBag.Statuses)
+                        {
+                            if (Model.StatusVMId == item.StatusVMId)
+                            {
+                                <option selected="selected" name="StatusVMId" value="@item.StatusVMId">@item.Status</option>
+                            }
+                            else
+                            {
+                                <option name="StatusVMId" value="@item.StatusVMId">@item.Status</option>
+                            }
+                        }
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.StatusVMId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.RepairVMId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.RepairVMId, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-3">
+                <select class="form-control">
+                    <option name="RepairVMId" value="null"></option>
+                    @{
+                        foreach (RepairVM item in ViewBag.Repairs)
+                        {
+                            if (Model.RepairVMId == item.RepairVMId)
+                            {
+                                <option selected="selected" name="RepairVMId" value="@item.RepairVMId">@item.Name</option>
+                            }
+                            else
+                            {
+                                <option name="RepairVMId" value="@item.RepairVMId">@item.Name</option>
+                            }
+                        }
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.RepairVMId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DeviceVMId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DeviceVMId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => new BrandRepo().GetBrand(new DeviceRepo().GetDevice(model.DeviceVMId).BrandVMId).Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">                
+                <select id="BrandSelect" class="form-control">
+                    <option name="BrandVMId" value="null"></option>
+                    @{
+                        foreach (BrandVM item in ViewBag.Brands)
+                        {
+                            if (new DeviceRepo().GetDevice(Model.DeviceVMId).BrandVMId == item.BrandVMId)
+                            {
+                                <option selected="selected" value="@item.BrandVMId">@item.Brand</option>
+                            }
+                            else
+                            {
+                                <option value="@item.BrandVMId">@item.Brand</option>
+                            }
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => new DeviceRepo().GetDevice(model.DeviceVMId).Model, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                <select id="ModelSelect" class="form-control">
+                    <option class="BlankSelect" name="DeviceVMId" value="null"></option>
+                    @{
+                        foreach (DeviceVM item in ViewBag.Devices)
+                        {
+                            if (Model.DeviceVMId == item.DeviceVMId)
+                            {
+                                <option selected="selected" name="DeviceVMId" class="@item.BrandVMId" value="@item.DeviceVMId">@item.Model</option>
+                            }
+                            else
+                            {
+                                <option name="DeviceVMId" class="@item.BrandVMId" value="@item.DeviceVMId">@item.Model</option>
+                            }
+                        }
+                    }
+                </select>
                 @Html.ValidationMessageFor(model => model.DeviceVMId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -151,7 +220,7 @@
             </div>
         </div>
     </div>
-}
+                        }
 
 <div>
     @Html.ActionLink("Back to List", "TicketList", "Ticket")

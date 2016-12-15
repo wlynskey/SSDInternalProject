@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SSDInternalProject.ViewModels.RepairVM>
+
+@{
+    ViewBag.Title = "Evaluating";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Evaluating</h2>
+<p> Welcome @Html.Raw(ViewBag.userName)</p>
+
+<p> Please select the following issues</p>
+
+<div>
+    @using (Html.BeginForm("Evaluating", "Home", FormMethod.Post)) {
+        <form>
+            @foreach (var item in Model) {
+
+                <input type="checkbox" name="SelectedRepairItems"
+                       value=@Html.DisplayFor(modelItem => item.Name)>
+
+                @Html.DisplayFor(modelItem => item.Name)
+                <br />
+                @Html.DisplayNameFor(model => model.AvgHours)
+                @Html.DisplayFor(modelItem => item.AvgHours)
+                <br />
+                @Html.DisplayNameFor(model => model.AvgCost)
+                @Html.DisplayFor(modelItem => item.AvgCost)
+                <br />
+                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayFor(modelItem => item.Description)
+                <br />
+            }
+            <input for="submit" type="submit" id="submit" value="submit" />
+        </form>
+    }
+</div>

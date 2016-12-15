@@ -1,6 +1,8 @@
 ﻿
 using SSDInternalProject.Controllers.Repositories;
+using SSDInternalProject.Repositories;
 using SSDInternalProject.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -41,11 +43,11 @@ namespace SSDInternalProject.Controllers {
         public ActionResult Register(UserVM user) {
             UserRepo aRepo = new UserRepo();
             aRepo.Create(user);
-            return RedirectToAction("Customer", "Home", new { firstName = user.FirstName, lastName = user.LastName });
+            return RedirectToAction("Customer", "Home", new { userName = user.FirstName + " " + user.LastName });
         }
 
-        public ActionResult Customer(string firstName, string lastName) {
-            ViewBag.userName = firstName + " " + lastName;
+        public ActionResult Customer(string userName) {
+            ViewBag.userName = userName;
             return View();
         }
 
@@ -84,7 +86,16 @@ namespace SSDInternalProject.Controllers {
 
         public ActionResult Evaluating(string userName) {
             ViewBag.userName = userName;
-            return View();
+            RepairRepo rRepo = new RepairRepo();
+            List<RepairVM> items = rRepo.GetRepairList();
+            return View(items);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Evaluating(FormCollection formCollection) {
+            string selectedRepairItems = formCollection["SelectedRepairItems"];
+            string[] items = selectedRepairItems.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+            return RedirectToAction("Customer", "Home");
         }
     }
 }
